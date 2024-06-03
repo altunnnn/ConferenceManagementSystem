@@ -18,8 +18,10 @@ public class Review {
     private String comments;
 
     @ManyToOne
+    @JoinColumn(name = "paper_id")
     private Paper paper;
 
     @ManyToOne
+    @JoinColumn(name = "reviewer_id")
     private User reviewer;
 }

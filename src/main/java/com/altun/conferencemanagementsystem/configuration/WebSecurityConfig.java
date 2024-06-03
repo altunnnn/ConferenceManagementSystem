@@ -20,10 +20,10 @@ public class WebSecurityConfig {
 
     private final UserService userService;
 
-    @Bean
+    /*@Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
-    }
+    }*/
 
 
     protected SecurityFilterChain configure(HttpSecurity http) throws Exception {

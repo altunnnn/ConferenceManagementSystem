@@ -28,5 +28,20 @@ public class Paper {
     private User author;
 
     @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "paper_reviewer",
+            joinColumns = @JoinColumn(name = "paper_id"),
+            inverseJoinColumns = @JoinColumn(name = "user_id")
+    )
     private Set<User> reviewers = new HashSet<>();
+
+    @OneToMany(mappedBy = "paper", cascade = CascadeType.ALL)
+    private Set<Review> reviews = new HashSet<>();
+
+    public double getAverageScore() {
+        return reviews.stream()
+                .mapToInt(Review::getScore)
+                .average()
+                .orElse(0);
+    }
 }

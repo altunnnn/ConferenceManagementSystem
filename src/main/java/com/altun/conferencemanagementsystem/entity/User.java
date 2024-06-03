@@ -29,4 +29,13 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles = new HashSet<>();
 
+    @OneToMany(mappedBy = "author", cascade = CascadeType.ALL)
+    private Set<Paper> authoredPapers;
+
+    @ManyToMany(mappedBy = "reviewers")
+    private Set<Paper> reviewedPapers;
+
+    @OneToMany(mappedBy = "reviewer", cascade = CascadeType.ALL)
+    private Set<Review> reviews;
+
 }
