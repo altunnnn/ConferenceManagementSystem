@@ -2,7 +2,7 @@ package com.altun.conferencemanagementsystem.controller;
 
 import com.altun.conferencemanagementsystem.entity.User;
 import com.altun.conferencemanagementsystem.enums.RoleName;
-import com.altun.conferencemanagementsystem.service.UserService;
+import com.altun.conferencemanagementsystem.service.impl.UserServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/users")
 @RequiredArgsConstructor
 public class UserController {
-    private final UserService userService;
+    private final UserServiceImpl userService;
 
     @PostMapping("/register")
     public ResponseEntity<User> registerUser(@RequestBody User user) {

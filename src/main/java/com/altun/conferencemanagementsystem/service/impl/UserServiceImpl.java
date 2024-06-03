@@ -1,4 +1,4 @@
-package com.altun.conferencemanagementsystem.service;
+package com.altun.conferencemanagementsystem.service.impl;
 
 import com.altun.conferencemanagementsystem.entity.Role;
 import com.altun.conferencemanagementsystem.entity.User;
@@ -19,7 +19,7 @@ import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
-public class UserService implements UserDetailsService {
+public class UserServiceImpl implements UserDetailsService {
 
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;

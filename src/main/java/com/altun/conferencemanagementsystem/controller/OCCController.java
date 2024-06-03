@@ -2,12 +2,12 @@ package com.altun.conferencemanagementsystem.controller;
 
 import com.altun.conferencemanagementsystem.entity.Paper;
 import com.altun.conferencemanagementsystem.entity.User;
+import com.altun.conferencemanagementsystem.service.OCCService;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
-import com.altun.conferencemanagementsystem.service.OCCService;
 
 import java.util.List;
 import java.util.Optional;
