@@ -5,6 +5,7 @@ import com.altun.conferencemanagementsystem.entity.User;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import com.altun.conferencemanagementsystem.service.OCCService;
 
@@ -19,8 +20,7 @@ public class OCCController {
 
 
     @GetMapping("/papers/{paperId}/suggested-referees")
-    //TODO: Implement PreAuthorize annotation after Spring Security add
-  //  @PreAuthorize("hasAuthority('OCC')")
+    @PreAuthorize("hasAuthority('OCC')")
     public ResponseEntity<List<User>> getSuggestedReferees(@PathVariable Long paperId) {
         Optional<Paper> optionalPaper = occService.findPaperById(paperId);
         if (!optionalPaper.isPresent()){
@@ -32,8 +32,7 @@ public class OCCController {
     }
 
     @PostMapping("/papers/{paperId}/assign-referees")
-    //TODO: Implement PreAuthorize annotation after Spring Security add
-  //  @PreAuthorize("hasAuthority('OCC')")
+    @PreAuthorize("hasAuthority('OCC')")
     public ResponseEntity<Paper> assignReferees(@PathVariable Long paperId, @RequestBody List<Long> refereeIds) {
         Paper paper = occService.assignReferees(paperId, refereeIds);
         return ResponseEntity.ok(paper);

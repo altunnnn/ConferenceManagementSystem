@@ -7,6 +7,7 @@ import com.altun.conferencemanagementsystem.service.ReviewService;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,13 +20,13 @@ public class ReviewController {
     private final ReviewService reviewService;
     private final PaperService paperService;
 
-   // @PreAuthorize("hasAuthority('REFEREE')")
+    @PreAuthorize("hasAuthority('REFEREE')")
     @PostMapping
     public ResponseEntity<Review> submitReview(@RequestBody Review review) {
         return ResponseEntity.ok(reviewService.save(review));
     }
 
- //   @PreAuthorize("hasAuthority('REFEREE')")
+    @PreAuthorize("hasAuthority('REFEREE')")
     @GetMapping("/paper/{paperId}")
     public ResponseEntity<List<Review>> getReviewsForPaper(@PathVariable Long paperId) {
         Paper paper = paperService.findById(paperId).orElseThrow(() -> new EntityNotFoundException("Paper not found"));
